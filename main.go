@@ -7,9 +7,10 @@ import (
 )
 
 func main() {
-	fmt.Println(conway.NewGrid())
 
 	grid := conway.NewGrid()
 
-	grid.DisplayGrid()
+	// grid.DisplayGrid()
+	fmt.Println(grid.NeighborCount(3, 3))
+
 }

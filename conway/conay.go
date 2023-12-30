@@ -52,6 +52,37 @@ func (g *GridContainer) DisplayGrid() {
 	fmt.Println()
 }
 
+/*
+	0 0 0
+	0 0 0
+	0 0 0
+*/
+
+func (g *GridContainer) NeighborCount(row int, col int) int {
+	count := 0
+
+	// row = 0
+	// col = 0
+
+	// i = -1
+	for i := row - 1; i <= row+1; i++ {
+		for j := col - 1; j <= col+1; j++ {
+			if i >= 0 && i < int(rows) && j >= 0 && j < int(cols) && !(i == row && j == col) {
+				fmt.Print(g.Grid[i][j])
+				fmt.Printf("(%d,%d)", i, j)
+				// working dont get center
+				if g.Grid[i][j].isAlive {
+					count++
+				}
+			}
+		}
+		fmt.Println()
+	}
+
+	// fmt.Println("you picked", g.Grid[row][col], "val:", row, " : ", col)
+	return count
+}
+
 func ClearScreen() {
 	fmt.Print("\033[H\033[2J")
 }
