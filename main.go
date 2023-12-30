@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-	fmt.Println("initial commit game of life")
-	conway.StartConway()
+	fmt.Println(conway.NewGrid())
 
 }
