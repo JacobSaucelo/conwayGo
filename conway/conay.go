@@ -1,6 +1,9 @@
 package conway
 
-import "math/rand"
+import (
+	"fmt"
+	"math/rand"
+)
 
 var rows uint8 = 10
 var cols uint8 = 10
@@ -21,4 +24,18 @@ func NewGrid() Grid {
 	}
 
 	return grid
+}
+
+/*
+	[][][][]
+	[][][][]
+	[][][][]
+*/
+
+func (g *Grid) DisplayGrid() {
+
+}
+
+func ClearScreen() {
+	fmt.Print("\033[H\033[2J")
 }
