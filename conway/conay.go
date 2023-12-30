@@ -14,7 +14,11 @@ type Cell struct {
 
 type Grid [][]Cell
 
-func NewGrid() Grid {
+type GridContainer struct {
+	Grid Grid
+}
+
+func NewGrid() GridContainer {
 	grid := make(Grid, rows)
 	for i := range grid {
 		grid[i] = make([]Cell, cols)
@@ -23,7 +27,9 @@ func NewGrid() Grid {
 		}
 	}
 
-	return grid
+	return GridContainer{
+		Grid: grid,
+	}
 }
 
 /*
@@ -32,8 +38,19 @@ func NewGrid() Grid {
 	[][][][]
 */
 
-func (g *Grid) DisplayGrid() {
-
+func (g *GridContainer) DisplayGrid() {
+	for i := range g.Grid {
+		for j := range g.Grid[i] {
+			if g.Grid[i][j].isAlive {
+				fmt.Print("1")
+				// fmt.Print(g.Grid[i][j])
+			} else {
+				fmt.Print("0")
+			}
+		}
+		fmt.Println()
+	}
+	fmt.Println()
 }
 
 func ClearScreen() {
