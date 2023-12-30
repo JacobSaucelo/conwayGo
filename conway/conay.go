@@ -42,10 +42,9 @@ func (g *GridContainer) DisplayGrid() {
 	for i := range g.Grid {
 		for j := range g.Grid[i] {
 			if g.Grid[i][j].isAlive {
-				fmt.Print("1")
-				// fmt.Print(g.Grid[i][j])
+				fmt.Print("▉▉")
 			} else {
-				fmt.Print("0")
+				fmt.Print("░░")
 			}
 		}
 		fmt.Println()
