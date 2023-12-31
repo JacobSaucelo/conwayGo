@@ -83,6 +83,30 @@ func (g *GridContainer) NeighborCount(row int, col int) int {
 	return count
 }
 
+func (g *GridContainer) Update() GridContainer {
+	newGrid := make(Grid, rows)
+	for i := range newGrid {
+		newGrid[i] = make([]Cell, cols)
+	}
+
+	for i := range g.Grid {
+		for j := range g.Grid[i] {
+			neigbors := g.NeighborCount(i, j)
+			// fmt.Println("neigbors: ", neigbors)
+			if g.Grid[i][j].isAlive {
+				fmt.Println("alive", neigbors)
+			} else {
+				fmt.Println("dead", neigbors)
+			}
+		}
+		fmt.Println()
+	}
+
+	return GridContainer{
+		Grid: newGrid,
+	}
+}
+
 func ClearScreen() {
 	fmt.Print("\033[H\033[2J")
 }
