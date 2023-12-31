@@ -5,8 +5,8 @@ import (
 	"math/rand"
 )
 
-var rows uint8 = 10
-var cols uint8 = 10
+var rows uint8 = 20
+var cols uint8 = 30
 
 type Cell struct {
 	isAlive bool
@@ -68,15 +68,15 @@ func (g *GridContainer) NeighborCount(row int, col int) int {
 	for i := row - 1; i <= row+1; i++ {
 		for j := col - 1; j <= col+1; j++ {
 			if i >= 0 && i < int(rows) && j >= 0 && j < int(cols) && !(i == row && j == col) {
-				fmt.Print(g.Grid[i][j])
-				fmt.Printf("(%d,%d)", i, j)
+				// fmt.Print(g.Grid[i][j])
+				// fmt.Printf("(%d,%d)", i, j)
 				// working dont get center
 				if g.Grid[i][j].isAlive {
 					count++
 				}
 			}
 		}
-		fmt.Println()
+		// fmt.Println()
 	}
 
 	// fmt.Println("you picked", g.Grid[row][col], "val:", row, " : ", col)
@@ -94,12 +94,13 @@ func (g *GridContainer) Update() GridContainer {
 			neigbors := g.NeighborCount(i, j)
 			// fmt.Println("neigbors: ", neigbors)
 			if g.Grid[i][j].isAlive {
-				fmt.Println("alive", neigbors)
+				newGrid[i][j].isAlive = neigbors == 2 || neigbors == 3
+				// fmt.Println("alive", neigbors)
 			} else {
-				fmt.Println("dead", neigbors)
+				newGrid[i][j].isAlive = neigbors == 3
+				// fmt.Println("dead", neigbors)
 			}
 		}
-		fmt.Println()
 	}
 
 	return GridContainer{
